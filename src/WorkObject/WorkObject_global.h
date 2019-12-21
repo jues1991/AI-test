@@ -1,0 +1,12 @@
+#ifndef WORKOBJECT_GLOBAL_H
+#define WORKOBJECT_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(WORKOBJECT_LIBRARY)
+#  define WORKOBJECT_EXPORT Q_DECL_EXPORT
+#else
+#  define WORKOBJECT_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // WORKOBJECT_GLOBAL_H

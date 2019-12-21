@@ -1,6 +1,7 @@
-QT       += core gui
+QT += widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TEMPLATE = lib
+DEFINES += WORKSPACE_LIBRARY
 
 CONFIG += c++11
 
@@ -16,28 +17,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    mainwindow.cpp
+    workspace.cpp
 
 HEADERS += \
-    mainwindow.h
-
-FORMS += \
-    mainwindow.ui
+    WorkSpace_global.h \
+    workspace.h
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+unix {
+    target.path = /usr/lib
+}
 !isEmpty(target.path): INSTALLS += target
-
-
-# WorkSpace
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../WorkSpace/release/ -lWorkSpace
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../WorkSpace/debug/ -lWorkSpace
-else:unix: LIBS += -L$$OUT_PWD/../WorkSpace/ -lWorkSpace
-
-INCLUDEPATH += $$PWD/../WorkSpace
-DEPENDPATH += $$PWD/../WorkSpace
 
 
 # WorkObject
